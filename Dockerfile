@@ -67,6 +67,7 @@ RUN set -eux; \
 		php7-calendar \
 		php7-xml \
 		php7-zip \
+		php7 \
 		unzip \
 	; \
 	install -d -o apache -g root -m 0750 /var/www/html; \
