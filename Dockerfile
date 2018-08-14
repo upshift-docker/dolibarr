@@ -2,7 +2,7 @@ FROM alpine:3.8
 
 LABEL maintainer="docker@upshift.fr"
 
-ENV DOLI_VERSION 7.0.3
+ENV DOLI_VERSION 8.0.0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
