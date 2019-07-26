@@ -2,7 +2,7 @@ FROM alpine:3.9
 
 LABEL maintainer="docker@upshift.fr"
 
-ENV DOLI_VERSION 9.0.4
+ENV DOLI_VERSION 10.0.0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
@@ -60,6 +60,7 @@ RUN set -eux; \
 		php7-mcrypt \
 		php7-openssl \
 		php7-mbstring \
+		php7-intl \
 		php7-gd \
 		php7-imagick \
 		php7-soap \
