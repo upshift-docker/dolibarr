@@ -68,7 +68,7 @@ RUN set -eux; \
 		php7-calendar \
 		php7-xml \
 		php7-zip \
-		php7-tokenizers \
+		php7-tokenizer \
 		php7 \
 		mariadb-client \
 		unzip \
