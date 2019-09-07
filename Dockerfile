@@ -70,6 +70,7 @@ RUN set -eux; \
 		php7-zip \
 		php7 \
 		mariadb-client \
+		postgresql-client \
 		unzip \
 	; \
 	install -d -o apache -g root -m 0750 /var/www/html; \
