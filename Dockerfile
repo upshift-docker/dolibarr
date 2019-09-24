@@ -68,6 +68,8 @@ RUN set -eux; \
 		php7-calendar \
 		php7-xml \
 		php7-zip \
+		php7-tokenizer \
+		php7-simplexml \
 		php7 \
 		mariadb-client \
 		postgresql-client \
