@@ -2,7 +2,42 @@ FROM alpine:3.11
 
 LABEL maintainer="docker@upshift.fr"
 
-ENV DOLI_VERSION 11.0
+RUN set -eux; \
+	# install needed packages
+	# see https://wiki.dolibarr.org/index.php/Dependencies_and_external_libraries
+	apk add --no-cache \
+		bash \
+		openssl \
+		rsync \
+		apache2 \
+		php7-apache2 \
+		php7-session \
+		php7-mysqli \
+		php7-pgsql \
+		php7-ldap \
+		php7-mcrypt \
+		php7-openssl \
+		php7-mbstring \
+		php7-intl \
+		php7-gd \
+		php7-imagick \
+		php7-soap \
+		php7-curl \
+		php7-calendar \
+		php7-xml \
+		php7-zip \
+		php7-tokenizer \
+		php7-simplexml \
+		php7 \
+		mariadb-client \
+		postgresql-client \
+		unzip \
+	; \
+	install -d -o apache -g root -m 0750 /var/www/html; \
+	rm -rf /var/www/localhost/htdocs; \
+	ln -s /var/www/html /var/www/localhost/htdocs
+
+ENV DOLI_VERSION 11.0.0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
@@ -43,41 +78,6 @@ ENV PHP_INI_DATE_TIMEZONE 'Europe/Paris'
 ENV PHP_MEMORY_LIMIT 256M
 ENV PHP_MAX_UPLOAD 20M
 ENV PHP_MAX_EXECUTION_TIME 300
-
-RUN set -eux; \
-	# install needed packages
-	# see https://wiki.dolibarr.org/index.php/Dependencies_and_external_libraries
-	apk add --no-cache \
-		bash \
-		openssl \
-		rsync \
-		apache2 \
-		php7-apache2 \
-		php7-session \
-		php7-mysqli \
-		php7-pgsql \
-		php7-ldap \
-		php7-mcrypt \
-		php7-openssl \
-		php7-mbstring \
-		php7-intl \
-		php7-gd \
-		php7-imagick \
-		php7-soap \
-		php7-curl \
-		php7-calendar \
-		php7-xml \
-		php7-zip \
-		php7-tokenizer \
-		php7-simplexml \
-		php7 \
-		mariadb-client \
-		postgresql-client \
-		unzip \
-	; \
-	install -d -o apache -g root -m 0750 /var/www/html; \
-	rm -rf /var/www/localhost/htdocs; \
-	ln -s /var/www/html /var/www/localhost/htdocs
 
 VOLUME /var/www/html
 VOLUME /var/www/documents
