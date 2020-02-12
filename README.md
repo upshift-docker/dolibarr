@@ -14,7 +14,7 @@ To start the container type:
 # docker run -d -p 8080:80 --link my-db:db upshift/dolibarr
 ```
 
-Now you can access Dolibarr at http://localhost:8080/ from your host system. The Dolibarr setup wizard should appear on first run, and will guide you for initial configuration.
+Now you can access Dolibarr at http://localhost:8080/ from your host system. Default password for the 'admin' user is 'dolibarr'.
 
 ## Persistent data
 
@@ -204,6 +204,17 @@ This parameter contains the admin's login used in the first install.
 Examples:
 ```
 DOLI_ADMIN_LOGIN=admin
+```
+
+### DOLI_ADMIN_PASSWORD
+
+*Default value*: `dolibarr`
+
+This parameter contains the admin's password used in the first install.
+
+Examples:
+```
+DOLI_ADMIN_PASSWORD=dolibarr
 ```
 
 ### DOLI_MODULES
