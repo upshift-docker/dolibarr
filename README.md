@@ -2,8 +2,6 @@
 
 Docker image for [Dolibarr ERP](https://www.dolibarr.org).
 
-Based on [Monogramm/docker-dolibarr](https://github.com/Monogramm/docker-dolibarr)
-
 Provides full database configuration, production mode, HTTPS enforcer (SSL must be provided by reverse proxy), handles upgrades, and so on...
 
 ## Usage
@@ -425,27 +423,29 @@ This example will use the a [MariaDB](https://hub.docker.com/_/mariadb/) contain
 Create `docker-compose.yml` file as following:
 
 ```yml
-version: '2'
+version: '3'
 
 volumes:
   dolibarr_html:
   dolibarr_docs:
   dolibarr_db:
 
-mariadb:
+services:
+
+  mariadb:
     image: mariadb:latest
     restart: always
-    command: --character_set_client=utf8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci --character-set-client-handshake=FALSE
+    command: --character_set_client=utf8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
       - dolibarr_db:/var/lib/mysql
     environment:
-        - "MYSQL_ROOT_PASSWORD="
-        - "MYSQL_PASSWORD="
         - "MYSQL_DATABASE=dolibarr"
         - "MYSQL_USER=dolibarr"
+        - "MYSQL_PASSWORD=dolibarr"
+        - "MYSQL_RANDOM_ROOT_PASSWORD=yes"
 
-dolibarr:
-    image: upshift/dolibarr
+  dolibarr:
+    image: dolibarr
     restart: always
     depends_on:
         - mariadb
@@ -455,7 +455,7 @@ dolibarr:
         - "DOLI_DB_HOST=mariadb"
         - "DOLI_DB_NAME=dolibarr"
         - "DOLI_DB_USER=dolibarr"
-        - "DOLI_DB_PASSWORD="
+        - "DOLI_DB_PASSWORD=dolibarr"
     volumes:
         - dolibarr_html:/var/www/html
         - dolibarr_docs:/var/www/documents
