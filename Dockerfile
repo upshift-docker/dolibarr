@@ -66,6 +66,7 @@ RUN set -eux; \
 		php7-soap \
 		php7-curl \
 		php7-calendar \
+		php7-json \
 		php7-xml \
 		php7-zip \
 		php7-tokenizer \
