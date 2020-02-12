@@ -456,7 +456,7 @@ services:
         - "MYSQL_RANDOM_ROOT_PASSWORD=yes"
 
   dolibarr:
-    image: dolibarr
+    image: upshift/dolibarr:latest
     restart: always
     depends_on:
         - mariadb

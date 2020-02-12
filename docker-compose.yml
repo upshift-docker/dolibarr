@@ -14,23 +14,23 @@ services:
     volumes:
       - dolibarr_db:/var/lib/mysql
     environment:
-        - "MYSQL_DATABASE=dolibarr"
-        - "MYSQL_USER=dolibarr"
-        - "MYSQL_PASSWORD=dolibarr"
-        - "MYSQL_RANDOM_ROOT_PASSWORD=yes"
+        - MYSQL_DATABASE=dolibarr
+        - MYSQL_USER=dolibarr
+        - MYSQL_PASSWORD=dolibarr
+        - MYSQL_RANDOM_ROOT_PASSWORD=yes
 
   dolibarr:
-    image: dolibarr
+    image: upshift/dolibarr:latest
     restart: always
     depends_on:
         - mariadb
     ports:
-        - "8080:80"
+        - 8080:80
     environment:
-        - "DOLI_DB_HOST=mariadb"
-        - "DOLI_DB_NAME=dolibarr"
-        - "DOLI_DB_USER=dolibarr"
-        - "DOLI_DB_PASSWORD=dolibarr"
+        - DOLI_DB_HOST=mariadb
+        - DOLI_DB_NAME=dolibarr
+        - DOLI_DB_USER=dolibarr
+        - DOLI_DB_PASSWORD=dolibarr
     volumes:
         - dolibarr_html:/var/www/html
         - dolibarr_docs:/var/www/documents
