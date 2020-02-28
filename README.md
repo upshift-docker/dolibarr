@@ -394,29 +394,16 @@ DOLI_NO_CSRF_CHECK=0
 DOLI_NO_CSRF_CHECK=1
 ```
 
-### PHP_INI_DATE_TIMEZONE
+### PHP_INI_*
 
-*Default value*: `UTC`
+Replace or add configuration in php.ini file.
 
-Default timezone on PHP.
-
-### PHP_MEMORY_LIMIT
-
-*Default value*: `256M`
-
-Default memory limit on PHP.
-
-### PHP_MAX_UPLOAD
-
-*Default value*: `20M`
-
-Default max upload size on PHP.
-
-### PHP_MAX_EXECUTION_TIME
-
-*Default value*: `300`
-
-Default max execution time (in seconds) on PHP.
+Examples:
+```
+ENV PHP_INI_upload_max_filesize=50M
+ENV PHP_INI_memory_limit=256M
+ENV PHP_INI_max_execution_time=60
+```
 
 # Running this image with docker-compose
 
