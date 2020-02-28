@@ -25,14 +25,20 @@ fi
 chown -R apache:root /var/www
 
 if [ ! -f /etc/php7/php.ini ]; then
-	cat <<-EOF > /etc/php7/php.ini
-		date.timezone = "${PHP_INI_DATE_TIMEZONE}"
-		memory_limit = "${PHP_MEMORY_LIMIT}"
-		upload_max_filesize = "${PHP_MAX_UPLOAD}"
-		max_execution_time = "${PHP_MAX_EXECUTION_TIME}"
-		sendmail_path = /usr/sbin/sendmail -t -i
-		EOF
+	touch /etc/php7/php.ini
 fi
+
+for X_PHP_INI in ${!PHP_INI_@}
+do
+	X_PHP_VAR=${X_PHP_INI##PHP_INI_}
+	X_PHP_VAR=${X_PHP_VAR,,}
+	if grep -q "^;*\s*${X_PHP_VAR}\s*=" /etc/php7/php.ini
+	then
+		sed -i "s/^;*\s*${X_PHP_VAR}\s*=.*/${X_PHP_VAR} = ${!X_PHP_INI}/" /etc/php7/php.ini
+	else
+		echo "${X_PHP_VAR} = ${!X_PHP_INI}" >>/etc/php7/php.ini
+	fi
+done
 
 if [ ! -d /var/www/html/conf ]; then
 	mkdir -p /var/www/html/conf

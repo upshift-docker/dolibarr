@@ -29,6 +29,7 @@ RUN set -eux; \
 		php7-zip \
 		php7-tokenizer \
 		php7-simplexml \
+		php7-opcache \
 		php7 \
 		mariadb-client \
 		postgresql-client \
@@ -75,11 +76,6 @@ ENV DOLI_LDAP_DEBUG false
 ENV DOLI_HTTPS 0
 ENV DOLI_PROD 0
 ENV DOLI_NO_CSRF_CHECK 0
-
-ENV PHP_INI_DATE_TIMEZONE 'Europe/Paris'
-ENV PHP_MEMORY_LIMIT 256M
-ENV PHP_MAX_UPLOAD 20M
-ENV PHP_MAX_EXECUTION_TIME 300
 
 ENV LANG fr_FR
 
