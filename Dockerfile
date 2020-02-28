@@ -39,11 +39,6 @@ ENV DOLI_HTTPS 0
 ENV DOLI_PROD 0
 ENV DOLI_NO_CSRF_CHECK 0
 
-ENV PHP_INI_DATE_TIMEZONE 'Europe/Paris'
-ENV PHP_MEMORY_LIMIT 256M
-ENV PHP_MAX_UPLOAD 20M
-ENV PHP_MAX_EXECUTION_TIME 300
-
 RUN set -eux; \
 	# install needed packages
 	# see https://wiki.dolibarr.org/index.php/Dependencies_and_external_libraries
@@ -68,6 +63,7 @@ RUN set -eux; \
 		php7-json \
 		php7-xml \
 		php7-zip \
+		php7-opcache \
 		unzip \
 	; \
 	install -d -o apache -g root -m 0750 /var/www/html; \
