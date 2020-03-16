@@ -26,6 +26,8 @@ RUN set -eux; \
 		php7-calendar \
 		php7-json \
 		php7-xml \
+		php7-xmlreader \
+		php7-xmlwriter \
 		php7-zip \
 		php7-tokenizer \
 		php7-simplexml \
