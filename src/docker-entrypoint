@@ -96,7 +96,7 @@ if [ ! -f /var/www/html/conf/conf.php ]; then
 		EOF
 
 	chown apache:root /var/www/html/conf/conf.php
-	chmod 640 /var/www/html/conf/conf.php
+	chmod 400 /var/www/html/conf/conf.php
 fi
 
 # Detect installed version (docker specific solution)
