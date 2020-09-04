@@ -82,6 +82,7 @@ ENV DOLI_NO_CSRF_CHECK 0
 ENV PHP_INI_upload_max_filesize=50M
 ENV PHP_INI_memory_limit=256M
 ENV PHP_INI_max_execution_time=60
+ENV PHP_INI_date.timezone="Europe/Paris"
 
 ENV LANG fr_FR
 
