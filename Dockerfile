@@ -36,12 +36,13 @@ RUN set -eux; \
 		mariadb-client \
 		postgresql-client \
 		unzip \
+		tzdata \
 	; \
 	install -d -o apache -g root -m 0750 /var/www/html; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION 12.0.2
+ENV DOLI_VERSION 12.0.3
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
