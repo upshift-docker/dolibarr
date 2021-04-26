@@ -42,7 +42,7 @@ RUN set -eux; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION 12.0.4
+ENV DOLI_VERSION 13.0.2
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
