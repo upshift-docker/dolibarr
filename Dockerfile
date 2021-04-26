@@ -20,6 +20,7 @@ RUN set -eux; \
 		php7-mbstring \
 		php7-intl \
 		php7-gd \
+		php7-imap \
 		php7-imagick \
 		php7-soap \
 		php7-curl \
