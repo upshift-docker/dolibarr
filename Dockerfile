@@ -1,4 +1,4 @@
-FROM alpine:3.12
+FROM alpine:3.13
 
 LABEL maintainer="docker@upshift.fr"
 
@@ -20,6 +20,7 @@ RUN set -eux; \
 		php7-mbstring \
 		php7-intl \
 		php7-gd \
+		php7-imap \
 		php7-imagick \
 		php7-soap \
 		php7-curl \
@@ -42,7 +43,7 @@ RUN set -eux; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION 12.0.5
+ENV DOLI_VERSION 13.0.0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
@@ -83,6 +84,7 @@ ENV DOLI_NO_CSRF_CHECK 0
 ENV PHP_INI_upload_max_filesize=50M
 ENV PHP_INI_memory_limit=256M
 ENV PHP_INI_max_execution_time=60
+ENV PHP_INI_post_max_size=8M
 
 ENV LANG fr_FR
 
