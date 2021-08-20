@@ -91,10 +91,8 @@ ENV LANG fr_FR
 VOLUME /var/www/html
 VOLUME /var/www/documents
 
-# Get Dolibarr
-ADD https://github.com/Dolibarr/dolibarr/archive/${DOLI_VERSION}.zip /tmp/dolibarr.zip
-#COPY /dolibarr-${DOLI_VERSION}.zip /tmp/dolibarr.zip
 RUN set -eux; \
+	wget https://github.com/Dolibarr/dolibarr/archive/${DOLI_VERSION}.zip -O /tmp/dolibarr.zip; \
 	unzip -q /tmp/dolibarr.zip -d /tmp/dolibarr; \
 	rm -f /tmp/dolibarr.zip; \
 	mkdir -p /usr/src/dolibarr; \
