@@ -37,7 +37,7 @@ if [ ! -d /var/www/documents ]; then
 	mkdir -p /var/www/documents
 fi
 chown -R apache:root /var/www/documents
-chmod -R u+w /var/www/documents
+chmod -R ug+w /var/www/documents
 
 if [ ! -d /var/www/html/conf ]; then
 	mkdir -p /var/www/html/conf
@@ -187,6 +187,9 @@ if version_greater "$image_version" "$installed_version"; then
 	chown apache:apache /var/www/documents/install.lock
 	chmod 440 /var/www/documents/install.lock
 fi
+
+chown apache:root /var/www/html/{custom,theme}
+chmod -R ug+w /var/www/html/{custom,theme}
 
 if [ -f /var/www/documents/install.lock ]; then
 	echo $image_version > /var/www/documents/install.version
