@@ -189,7 +189,7 @@ if version_greater "$image_version" "$installed_version"; then
 fi
 
 chown apache:root /var/www/html/{custom,theme}
-chmod -R ug+w /var/www/html/{custom,theme}
+chmod 775 /var/www/html/{custom,theme}
 
 if [ -f /var/www/documents/install.lock ]; then
 	echo $image_version > /var/www/documents/install.version
