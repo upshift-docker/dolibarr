@@ -432,6 +432,7 @@ services:
 
   mariadb:
     image: mariadb:latest
+    privileged: true
     restart: always
     command: --character_set_client=utf8 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
