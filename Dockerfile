@@ -33,6 +33,11 @@ RUN set -eux; \
 		php7-tokenizer \
 		php7-simplexml \
 		php7-opcache \
+		php7-pdo \
+		php7-pdo_mysql \
+		php7-pdo_pgsql \
+		php7-pdo_sqlite \
+		php7-ctype \
 		php7 \
 		mariadb-client \
 		postgresql-client \
