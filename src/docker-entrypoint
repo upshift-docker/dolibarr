@@ -191,8 +191,8 @@ if version_greater "$image_version" "$installed_version"; then
 	chmod 440 /var/www/documents/install.lock
 fi
 
-chown apache:root /var/www/html/{custom,theme}
-chmod 775 /var/www/html/{custom,theme}
+chown apache:root /var/www/html/custom
+chmod 775 /var/www/html/custom
 
 if [ -f /var/www/documents/install.lock ]; then
 	echo $image_version > /var/www/documents/install.version
