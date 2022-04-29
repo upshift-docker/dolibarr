@@ -45,6 +45,9 @@ fi
 chown apache:root /var/www/html/conf
 chmod 550 /var/www/html/conf
 
+chown apache:root /run/apache2
+chmod 770 /run/apache2
+
 # Create a default config
 if [ ! -f /var/www/html/conf/conf.php ]; then
 	cat <<-EOF > /var/www/html/conf/conf.php
