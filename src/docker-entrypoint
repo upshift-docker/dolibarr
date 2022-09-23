@@ -18,18 +18,18 @@ function run_as() {
 	fi
 }
 
-if [ ! -f /etc/php7/php.ini ]; then
-	touch /etc/php7/php.ini
+if [ ! -f /etc/php8/php.ini ]; then
+	touch /etc/php8/php.ini
 fi
 
 for X_PHP_INI in ${!PHP_INI_@}
 do
 	X_PHP_VAR=${X_PHP_INI##PHP_INI_}
-	if grep -q "^;*\s*${X_PHP_VAR}\s*=" /etc/php7/php.ini
+	if grep -q "^;*\s*${X_PHP_VAR}\s*=" /etc/php8/php.ini
 	then
-		sed -i "s/^;*\s*${X_PHP_VAR}\s*=.*/${X_PHP_VAR} = ${!X_PHP_INI}/" /etc/php7/php.ini
+		sed -i "s/^;*\s*${X_PHP_VAR}\s*=.*/${X_PHP_VAR} = ${!X_PHP_INI}/" /etc/php8/php.ini
 	else
-		echo "${X_PHP_VAR} = ${!X_PHP_INI}" >>/etc/php7/php.ini
+		echo "${X_PHP_VAR} = ${!X_PHP_INI}" >>/etc/php8/php.ini
 	fi
 done
 
