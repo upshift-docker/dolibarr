@@ -1,4 +1,4 @@
-FROM alpine:3.15
+FROM alpine:3.16
 
 LABEL maintainer="docker@upshift.fr"
 
@@ -38,6 +38,7 @@ RUN set -eux; \
 		php7-pdo_pgsql \
 		php7-pdo_sqlite \
 		php7-ctype \
+		php7-fileinfo \
 		php7 \
 		mariadb-client \
 		postgresql-client \
@@ -69,7 +70,7 @@ RUN set -eux; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION 15.0.3
+ENV DOLI_VERSION 16.0.0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
