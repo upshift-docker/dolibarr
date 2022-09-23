@@ -10,36 +10,36 @@ RUN set -eux; \
 		openssl \
 		rsync \
 		apache2 \
-		php7-apache2 \
-		php7-session \
-		php7-mysqli \
-		php7-pgsql \
-		php7-ldap \
-		php7-mcrypt \
-		php7-openssl \
-		php7-mbstring \
-		php7-intl \
-		php7-gd \
-		php7-imap \
-		php7-imagick \
-		php7-soap \
-		php7-curl \
-		php7-calendar \
-		php7-json \
-		php7-xml \
-		php7-xmlreader \
-		php7-xmlwriter \
-		php7-zip \
-		php7-tokenizer \
-		php7-simplexml \
-		php7-opcache \
-		php7-pdo \
-		php7-pdo_mysql \
-		php7-pdo_pgsql \
-		php7-pdo_sqlite \
-		php7-ctype \
-		php7-fileinfo \
-		php7 \
+		php8-apache2 \
+		php8-session \
+		php8-mysqli \
+		php8-pgsql \
+		php8-ldap \
+		php8-pecl-mcrypt \
+		php8-openssl \
+		php8-mbstring \
+		php8-intl \
+		php8-gd \
+		php8-imap \
+		php8-pecl-imagick \
+		php8-soap \
+		php8-curl \
+		php8-calendar \
+		php8-json \
+		php8-xml \
+		php8-xmlreader \
+		php8-xmlwriter \
+		php8-zip \
+		php8-tokenizer \
+		php8-simplexml \
+		php8-opcache \
+		php8-pdo \
+		php8-pdo_mysql \
+		php8-pdo_pgsql \
+		php8-pdo_sqlite \
+		php8-ctype \
+		php8-fileinfo \
+		php8 \
 		mariadb-client \
 		postgresql-client \
 		unzip \
@@ -56,7 +56,7 @@ RUN set -eux; \
 		-e 's%^;*session\.save_path\s*=.*%session.save_path = /var/www/run%' \
 		-e 's%^;*session\.use_strict_mode\s*=.*%session.use_strict_mode = 1%' \
 		-e 's%^;*upload_max_filesize\s*=.*%upload_max_filesize = 50M%' \
-		/etc/php7/php.ini \
+		/etc/php8/php.ini \
 	; \
 	sed -i \
 		-e 's%^#*LoadModule deflate_module %LoadModule deflate_module %' \
