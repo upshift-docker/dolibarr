@@ -60,6 +60,7 @@ RUN set -eux; \
 	; \
 	sed -i \
 		-e 's%^#*LoadModule deflate_module %LoadModule deflate_module %' \
+		-e 's%^LoadModule autoindex_module %#LoadModule autoindex_module %' \
 		/etc/apache2/httpd.conf \
 	; \
 	echo \
