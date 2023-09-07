@@ -1,4 +1,4 @@
-FROM alpine:3.16
+FROM alpine:3.18
 
 LABEL maintainer="docker@upshift.fr"
 
@@ -10,36 +10,35 @@ RUN set -eux; \
 		openssl \
 		rsync \
 		apache2 \
-		php8-apache2 \
-		php8-session \
-		php8-mysqli \
-		php8-pgsql \
-		php8-ldap \
-		php8-pecl-mcrypt \
-		php8-openssl \
-		php8-mbstring \
-		php8-intl \
-		php8-gd \
-		php8-imap \
-		php8-pecl-imagick \
-		php8-soap \
-		php8-curl \
-		php8-calendar \
-		php8-json \
-		php8-xml \
-		php8-xmlreader \
-		php8-xmlwriter \
-		php8-zip \
-		php8-tokenizer \
-		php8-simplexml \
-		php8-opcache \
-		php8-pdo \
-		php8-pdo_mysql \
-		php8-pdo_pgsql \
-		php8-pdo_sqlite \
-		php8-ctype \
-		php8-fileinfo \
-		php8 \
+		php82-apache2 \
+		php82-session \
+		php82-mysqli \
+		php82-pgsql \
+		php82-ldap \
+		php82-openssl \
+		php82-mbstring \
+		php82-intl \
+		php82-gd \
+		php82-imap \
+		php82-pecl-imagick \
+		php82-soap \
+		php82-curl \
+		php82-calendar \
+		php82-json \
+		php82-xml \
+		php82-xmlreader \
+		php82-xmlwriter \
+		php82-zip \
+		php82-tokenizer \
+		php82-simplexml \
+		php82-opcache \
+		php82-pdo \
+		php82-pdo_mysql \
+		php82-pdo_pgsql \
+		php82-pdo_sqlite \
+		php82-ctype \
+		php82-fileinfo \
+		php82 \
 		mariadb-client \
 		postgresql-client \
 		unzip \
@@ -56,7 +55,7 @@ RUN set -eux; \
 		-e 's%^;*session\.save_path\s*=.*%session.save_path = /var/www/run%' \
 		-e 's%^;*session\.use_strict_mode\s*=.*%session.use_strict_mode = 1%' \
 		-e 's%^;*upload_max_filesize\s*=.*%upload_max_filesize = 50M%' \
-		/etc/php8/php.ini \
+		/etc/php82/php.ini \
 	; \
 	sed -i \
 		-e 's%^#*LoadModule deflate_module %LoadModule deflate_module %' \
@@ -71,7 +70,7 @@ RUN set -eux; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION 17.0.3
+ENV DOLI_VERSION 18.0.0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db

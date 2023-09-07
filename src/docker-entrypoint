@@ -18,18 +18,18 @@ function run_as() {
 	fi
 }
 
-if [ ! -f /etc/php8/php.ini ]; then
-	touch /etc/php8/php.ini
+if [ ! -f /etc/php82/php.ini ]; then
+	touch /etc/php82/php.ini
 fi
 
 for X_PHP_INI in ${!PHP_INI_@}
 do
 	X_PHP_VAR=${X_PHP_INI##PHP_INI_}
-	if grep -q "^;*\s*${X_PHP_VAR}\s*=" /etc/php8/php.ini
+	if grep -q "^;*\s*${X_PHP_VAR}\s*=" /etc/php82/php.ini
 	then
-		sed -i "s/^;*\s*${X_PHP_VAR}\s*=.*/${X_PHP_VAR} = ${!X_PHP_INI}/" /etc/php8/php.ini
+		sed -i "s/^;*\s*${X_PHP_VAR}\s*=.*/${X_PHP_VAR} = ${!X_PHP_INI}/" /etc/php82/php.ini
 	else
-		echo "${X_PHP_VAR} = ${!X_PHP_INI}" >>/etc/php8/php.ini
+		echo "${X_PHP_VAR} = ${!X_PHP_INI}" >>/etc/php82/php.ini
 	fi
 done
 
@@ -146,9 +146,9 @@ if version_greater "$image_version" "$installed_version"; then
 
 		# Call upgrade scripts
 		chmod 660 /var/www/html/conf/conf.php
-		run_as "cd /var/www/html/install/ && php upgrade.php ${base_version[0]}.${base_version[1]}.0 ${target_version[0]}.${target_version[1]}.0"
-		run_as "cd /var/www/html/install/ && php upgrade2.php ${base_version[0]}.${base_version[1]}.0 ${target_version[0]}.${target_version[1]}.0"
-		run_as "cd /var/www/html/install/ && php step5.php ${base_version[0]}.${base_version[1]}.0 ${target_version[0]}.${target_version[1]}.0"
+		run_as "cd /var/www/html/install/ && php82 upgrade.php ${base_version[0]}.${base_version[1]}.0 ${target_version[0]}.${target_version[1]}.0"
+		run_as "cd /var/www/html/install/ && php82 upgrade2.php ${base_version[0]}.${base_version[1]}.0 ${target_version[0]}.${target_version[1]}.0"
+		run_as "cd /var/www/html/install/ && php82 step5.php ${base_version[0]}.${base_version[1]}.0 ${target_version[0]}.${target_version[1]}.0"
 		chmod 440 /var/www/html/conf/conf.php
 
 	elif [ ! -f /var/www/documents/install.lock ]; then
@@ -180,8 +180,8 @@ if version_greater "$image_version" "$installed_version"; then
 
 		# Call install scripts
 		chmod 660 /var/www/html/conf/conf.php
-		run_as "cd /var/www/html/install/ && php step2.php set"
-		run_as "cd /var/www/html/install/ && php step5.php 0 0 ${LANG:-fr_FR} set ${DOLI_ADMIN_LOGIN} ${DOLI_ADMIN_PASSWORD} ${DOLI_ADMIN_PASSWORD}"
+		run_as "cd /var/www/html/install/ && php82 step2.php set"
+		run_as "cd /var/www/html/install/ && php82 step5.php 0 0 ${LANG:-fr_FR} set ${DOLI_ADMIN_LOGIN} ${DOLI_ADMIN_PASSWORD} ${DOLI_ADMIN_PASSWORD}"
 		chmod 440 /var/www/html/conf/conf.php
 
 	fi
