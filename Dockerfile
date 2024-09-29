@@ -1,4 +1,4 @@
-FROM alpine:3.18
+FROM alpine:3.20
 
 LABEL maintainer="docker@upshift.fr"
 
@@ -38,10 +38,17 @@ RUN set -eux; \
 		php82-pdo_sqlite \
 		php82-ctype \
 		php82-fileinfo \
+		php82-bz2 \
+		php82-zip \
+		php82-pecl-zstd \
 		php82 \
 		mariadb-client \
 		postgresql-client \
-		unzip \
+		tar \
+		gzip \
+		bzip2 \
+		zstd \
+		zip \
 		tzdata \
 	; \
 	sed -i \
@@ -70,7 +77,7 @@ RUN set -eux; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION 19.0.3
+ENV DOLI_VERSION 20.0.0
 
 ENV DOLI_DB_TYPE mysqli
 ENV DOLI_DB_HOST db
