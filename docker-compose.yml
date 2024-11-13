@@ -20,7 +20,8 @@ services:
         - MYSQL_RANDOM_ROOT_PASSWORD=yes
 
   dolibarr:
-    image: upshift/dolibarr:latest
+    #image: upshift/dolibarr:latest
+    image: dolibarr:latest
     restart: always
     depends_on:
         - mariadb
