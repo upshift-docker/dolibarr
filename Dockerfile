@@ -1,4 +1,4 @@
-FROM alpine:3.21
+FROM alpine:3.22
 
 LABEL maintainer="docker@upshift.fr"
 
@@ -10,38 +10,37 @@ RUN set -eux; \
 		openssl \
 		rsync \
 		apache2 \
-		php82-apache2 \
-		php82-session \
-		php82-mysqli \
-		php82-pgsql \
-		php82-ldap \
-		php82-openssl \
-		php82-mbstring \
-		php82-intl \
-		php82-gd \
-		php82-imap \
-		php82-pecl-imagick \
-		php82-soap \
-		php82-curl \
-		php82-calendar \
-		php82-json \
-		php82-xml \
-		php82-xmlreader \
-		php82-xmlwriter \
-		php82-zip \
-		php82-tokenizer \
-		php82-simplexml \
-		php82-opcache \
-		php82-pdo \
-		php82-pdo_mysql \
-		php82-pdo_pgsql \
-		php82-pdo_sqlite \
-		php82-ctype \
-		php82-fileinfo \
-		php82-bz2 \
-		php82-zip \
-		php82-pecl-zstd \
-		php82 \
+		php84 \
+		php84-apache2 \
+		php84-bz2 \
+		php84-calendar \
+		php84-ctype \
+		php84-curl \
+		php84-fileinfo \
+		php84-gd \
+		php84-imap \
+		php84-intl \
+		php84-json \
+		php84-ldap \
+		php84-mbstring \
+		php84-mysqli \
+		php84-opcache \
+		php84-openssl \
+		php84-pdo \
+		php84-pdo_mysql \
+		php84-pdo_pgsql \
+		php84-pdo_sqlite \
+		php84-pecl-imagick \
+		php84-pecl-zstd \
+		php84-pgsql \
+		php84-session \
+		php84-simplexml \
+		php84-soap \
+		php84-tokenizer \
+		php84-xml \
+		php84-xmlreader \
+		php84-xmlwriter \
+		php84-zip \
 		mariadb-client \
 		postgresql-client \
 		tar \
@@ -62,7 +61,7 @@ RUN set -eux; \
 		-e 's%^;*session\.save_path\s*=.*%session.save_path = /var/www/run%' \
 		-e 's%^;*session\.use_strict_mode\s*=.*%session.use_strict_mode = 1%' \
 		-e 's%^;*upload_max_filesize\s*=.*%upload_max_filesize = 50M%' \
-		/etc/php82/php.ini \
+		/etc/php84/php.ini \
 	; \
 	sed -i \
 		-e 's%^#*LoadModule deflate_module %LoadModule deflate_module %' \
@@ -77,45 +76,45 @@ RUN set -eux; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION 21.0.2
+ENV DOLI_VERSION=22.0.0
 
-ENV DOLI_DB_TYPE mysqli
-ENV DOLI_DB_HOST db
-ENV DOLI_DB_PORT 3306
-ENV DOLI_DB_USER dolibarr
-ENV DOLI_DB_PASSWORD dolibarr
-ENV DOLI_DB_NAME dolibarr
-ENV DOLI_DB_PREFIX llx_
-ENV DOLI_DB_CHARACTER_SET utf8
-ENV DOLI_DB_COLLATION utf8_unicode_ci
+ENV DOLI_DB_TYPE=mysqli
+ENV DOLI_DB_HOST=db
+ENV DOLI_DB_PORT=3306
+ENV DOLI_DB_USER=dolibarr
+ENV DOLI_DB_PASSWORD=dolibarr
+ENV DOLI_DB_NAME=dolibarr
+ENV DOLI_DB_PREFIX=llx_
+ENV DOLI_DB_CHARACTER_SET=utf8
+ENV DOLI_DB_COLLATION=utf8_unicode_ci
 
-ENV DOLI_DB_ROOT_LOGIN ''
-ENV DOLI_DB_ROOT_PASSWORD ''
+ENV DOLI_DB_ROOT_LOGIN=''
+ENV DOLI_DB_ROOT_PASSWORD=''
 
-ENV DOLI_ADMIN_LOGIN admin
-ENV DOLI_ADMIN_PASSWORD dolibarr
-ENV DOLI_MODULES ''
+ENV DOLI_ADMIN_LOGIN=admin
+ENV DOLI_ADMIN_PASSWORD=dolibarr
+ENV DOLI_MODULES=''
 
-ENV DOLI_URL_ROOT 'http://localhost'
+ENV DOLI_URL_ROOT='http://localhost'
 
-ENV DOLI_AUTH dolibarr
+ENV DOLI_AUTH=dolibarr
 
-ENV DOLI_LDAP_HOST 127.0.0.1
-ENV DOLI_LDAP_PORT 389
-ENV DOLI_LDAP_VERSION 3
-ENV DOLI_LDAP_SERVERTYPE openldap
-ENV DOLI_LDAP_LOGIN_ATTRIBUTE uid
-ENV DOLI_LDAP_DN ''
-ENV DOLI_LDAP_FILTER ''
-ENV DOLI_LDAP_ADMIN_LOGIN ''
-ENV DOLI_LDAP_ADMIN_PASS ''
-ENV DOLI_LDAP_DEBUG false
+ENV DOLI_LDAP_HOST=127.0.0.1
+ENV DOLI_LDAP_PORT=389
+ENV DOLI_LDAP_VERSION=3
+ENV DOLI_LDAP_SERVERTYPE=openldap
+ENV DOLI_LDAP_LOGIN_ATTRIBUTE=uid
+ENV DOLI_LDAP_DN=''
+ENV DOLI_LDAP_FILTER=''
+ENV DOLI_LDAP_ADMIN_LOGIN=''
+ENV DOLI_LDAP_ADMIN_PASS=''
+ENV DOLI_LDAP_DEBUG=false
 
-ENV DOLI_HTTPS 0
-ENV DOLI_PROD 0
-ENV DOLI_NO_CSRF_CHECK 0
+ENV DOLI_HTTPS=0
+ENV DOLI_PROD=0
+ENV DOLI_NO_CSRF_CHECK=0
 
-ENV LANG fr_FR
+ENV LANG=fr_FR
 
 VOLUME /var/www/html
 VOLUME /var/www/documents
