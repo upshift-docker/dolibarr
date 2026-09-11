@@ -1,4 +1,4 @@
-FROM alpine:3.23
+FROM alpine:3.24
 
 LABEL maintainer="docker@upshift.fr"
 
@@ -76,7 +76,7 @@ RUN set -eux; \
 	rm -rf /var/www/localhost/htdocs; \
 	ln -s /var/www/html /var/www/localhost/htdocs
 
-ENV DOLI_VERSION=23.0.4
+ENV DOLI_VERSION=24.0.0
 
 ENV DOLI_DB_TYPE=mysqli
 ENV DOLI_DB_HOST=db
